@@ -115,6 +115,4 @@ jobs:
           curl http://localhost:8000/api/cdb_rest/payloadiovs/?gtName=Test&majorIOV=0&minorIOV=0”
       - name: Access Django API write
         run: |
-          curl -X POST http://localhost:8000/api/cdb_rest/gtstatus” \
-          -H "Content-Type: application/json" \
-          -d '{"name": "locked"}'
+          curl -X POST http://localhost:8000/api/cdb_rest/gtstatus” -H "Content-Type: application/json" -d '{"name": "locked"}'
