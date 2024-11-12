@@ -79,15 +79,15 @@ jobs:
       - name: Test PostgreSQL Connection
         run: psql "host=localhost user=login dbname=dbname password=password"
 
-      - name: Create Read-Only Role
-        env:
-          PGPASSWORD: password
-        run: |
-          psql -h localhost -U login -d dbname -c "CREATE ROLE readonly;"
-          psql -h localhost -U login -d dbname -c "GRANT CONNECT ON DATABASE dbname TO readonly;"
-          psql -h localhost -U login -d dbname -c "GRANT USAGE ON SCHEMA public TO readonly;"
-          psql -h localhost -U login -d dbname -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly;"
-          psql -h localhost -U login -d dbname -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO readonly;"
+      #- name: Create Read-Only Role
+      #  env:
+      #    PGPASSWORD: password
+      #  run: |
+      #    psql -h localhost -U login -d dbname -c "CREATE ROLE readonly;"
+      #    psql -h localhost -U login -d dbname -c "GRANT CONNECT ON DATABASE dbname TO readonly;"
+      #    psql -h localhost -U login -d dbname -c "GRANT USAGE ON SCHEMA public TO readonly;"
+      #    psql -h localhost -U login -d dbname -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly;"
+      #    psql -h localhost -U login -d dbname -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO readonly;"
 
       - uses: actions/checkout@v3
         with:

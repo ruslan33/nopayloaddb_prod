@@ -261,7 +261,9 @@ class GlobalTagStatusCreationAPIView(ListCreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
+        ret=self.perform_create(serializer)
+        print(ret)
+        print(serializer.data)
         return Response(serializer.data)
 
 
