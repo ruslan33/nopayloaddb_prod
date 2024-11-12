@@ -83,11 +83,11 @@ jobs:
         env:
           PGPASSWORD: mypassword
         run: |
-          psql -h localhost -U myuser -d mydatabase -c "CREATE ROLE readonly;"
-          psql -h localhost -U myuser -d mydatabase -c "GRANT CONNECT ON DATABASE mydatabase TO readonly;"
-          psql -h localhost -U myuser -d mydatabase -c "GRANT USAGE ON SCHEMA public TO readonly;"
-          psql -h localhost -U myuser -d mydatabase -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly;"
-          psql -h localhost -U myuser -d mydatabase -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO readonly;"
+          psql -h localhost -U login -d dbname -c "CREATE ROLE readonly;"
+          psql -h localhost -U login -d dbname -c "GRANT CONNECT ON DATABASE dbname TO readonly;"
+          psql -h localhost -U login -d dbname -c "GRANT USAGE ON SCHEMA public TO readonly;"
+          psql -h localhost -U login -d dbname -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly;"
+          psql -h localhost -U login -d dbname -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO readonly;"
 
       - uses: actions/checkout@v3
         with:
