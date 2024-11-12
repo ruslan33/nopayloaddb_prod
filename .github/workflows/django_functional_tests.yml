@@ -100,7 +100,10 @@ jobs:
           cd nopayloaddb/
           # Skipping migrations to simulate missing tables
           python manage.py runserver 0.0.0.0:8000 &
-      - name: Access Django API
+      - name: Access Django API read
+        run: |
+          curl http://localhost:8000/api/cdb_rest/payloadiovs/?gtName=Test&majorIOV=0&minorIOV=0”
+      - name: Access Django API write
         run: |
           curl -X POST http://localhost:8000/api/cdb_rest/gtstatus” \
           -H "Content-Type: application/json" \
