@@ -81,7 +81,7 @@ jobs:
 
       - name: Create Read-Only Role
         env:
-          PGPASSWORD: mypassword
+          PGPASSWORD: password
         run: |
           psql -h localhost -U login -d dbname -c "CREATE ROLE readonly;"
           psql -h localhost -U login -d dbname -c "GRANT CONNECT ON DATABASE dbname TO readonly;"
